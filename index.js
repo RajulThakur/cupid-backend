@@ -61,12 +61,13 @@ wss.on("connection", function connection(socket) {
       }
     }
   });
+  socket.on("close", function close() {
+    console.log("User disconnected", --activeConnections);
+  });
 
   console.log("User connected", ++activeConnections);
 });
-wss.on("close", function close() {
-  console.log("User disconnected", --activeConnections);
-});
+
 server.listen(8080, function () {
   console.log(new Date() + "Server is listening on port 8080");
 });
