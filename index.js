@@ -1,6 +1,7 @@
 const { WebSocketServer } = require("ws");
 const http = require("http");
 let activeConnections = 0;
+const PORT=process.env.PORT || 8080
 //create http sserver
 const users = {};
 const allowedOrigins = [
@@ -68,6 +69,6 @@ wss.on("connection", function connection(socket) {
   console.log("User connected", ++activeConnections);
 });
 
-server.listen(8080, function () {
-  console.log(new Date() + "Server is listening on port 8080");
+server.listen(PORT, function () {
+  console.log(new Date() + `Server is listening on port ${PORT}`);
 });
